@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sergey Romanenko - UI Development</title>
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --text-color: #333;
+        --light-gray: #f5f6fa;
+        --spacing-unit: 1rem;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: var(--light-gray);
+      }
+
+      .cv-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 3rem;
+      }
+
+      .header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        align-items: center;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--secondary-color);
+      }
+
+      .name {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .title {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+      }
+
+      .section {
+        margin-bottom: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--secondary-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .experience-item {
+        margin-bottom: 2rem;
+      }
+
+      .job-title {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .company-date {
+        color: var(--secondary-color);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      ul {
+        list-style-position: inside;
+        margin-left: 1rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skill-category {
+        margin-bottom: 1rem;
+      }
+
+      .skill-title {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .skill-list {
+        color: var(--text-color);
+      }
+
+      ul ul {
+        margin-left: 2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      strong {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .skill-list strong {
+        color: var(--secondary-color);
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .profile-image {
+          margin: 0 auto;
+        }
+
+        body {
+          padding: 1rem;
+        }
+
+        .cv-container {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cv-container">
+      <header class="header">
+        <img
+          src="https://i.imgur.com/Ev85ZIy.jpeg"
+          alt="Sergey Romanenko"
+          class="profile-image" />
+        <div>
+          <h1 class="name">Sergey Romanenko</h1>
+          <h2 class="title">UI Development</h2>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="experience-item">
+          <div class="job-title">Full-Stack Developer</div>
+          <div class="company-date">402 Studio | Aug 2024 - Present</div>
+          <ul>
+            <li>
+              Designed and developed an AI-powered photo generator application
+              with an emphasis on scalability, performance, and user experience.
+            </li>
+            <li>
+              <strong>Backend Development:</strong>
+              <ul>
+                <li>
+                  Built and orchestrated scalable backend systems using
+                  <strong>Nest.js</strong>, integrating it seamlessly with
+                  <strong>Temporal</strong> for workflow management.
+                </li>
+                <li>
+                  Developed database interactions and automation using
+                  <strong>PostgreSQL</strong> with <strong>Supabase</strong>,
+                  including:
+                  <ul>
+                    <li>
+                      <strong>Real-time subscriptions</strong> with proper
+                      cleanup and error handling
+                    </li>
+                    <li>
+                      Advanced triggers, prepared statements, and atomic
+                      operations
+                    </li>
+                    <li>
+                      Implementation of
+                      <strong>Row Level Security (RLS) policies</strong>,
+                      ensuring secure and role-based data access
+                    </li>
+                    <li>
+                      Support for complex operations with RPC calls and
+                      transactions
+                    </li>
+                    <li>
+                      Comprehensive logging and monitoring for performance
+                      tracking
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Created AWS-based activities for photo analysis using
+                  <strong>AWS Rekognition</strong> and optimized file storage
+                  with <strong>S3</strong> buckets.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Frontend Development:</strong>
+              <ul>
+                <li>
+                  Created dynamic, component-based UIs with
+                  <strong>React</strong> and <strong>Styled-Components</strong>,
+                  leveraging a custom <strong>design token system</strong> for
+                  consistency and scalability.
+                </li>
+                <li>
+                  Utilized <strong>Storybook</strong> to document and test
+                  reusable UI components, ensuring modular and maintainable
+                  development practices.
+                </li>
+                <li>
+                  Configured CI/CD pipelines for seamless deployment on
+                  <strong>Vercel</strong> and enhanced build efficiency with
+                  <strong>Webpack</strong>.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>AI Integration:</strong>
+              <ul>
+                <li>
+                  Integrated OpenAI and Replicate for generating and processing
+                  AI-powered images, streamlining the process with backend
+                  workflows.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Testing:</strong>
+              <ul>
+                <li>
+                  Maintained high-quality code with a robust testing suite,
+                  utilizing <strong>Jest</strong>,
+                  <strong>React Testing Library</strong>, and
+                  <strong>Chromatic</strong> for functional and visual testing.
+                </li>
+                <li>
+                  Ensured application reliability with comprehensive unit,
+                  integration, and visual tests.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Followed best practices in coding, including type safety with
+              <strong>TypeScript</strong>, modular architecture, and performance
+              optimizations across the entire stack.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Software Engineering Team Lead</div>
+          <div class="company-date">Cisco | Jul 2021 -Jul 2024</div>
+          <ul>
+            <li>
+              Led the UI team for Cisco SPA Software Engineering division,
+              contributing to the development of:
+              <ul>
+                <li>Cisco Catalyst Center</li>
+                <li>Cisco ISE</li>
+                <li>Cisco Meraki</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Senior Frontend Engineer</div>
+          <div class="company-date">GBSFO, Cisco | Nov 2019 - Jul 2021</div>
+          <ul>
+            <li>
+              Key contributor to the Cisco DNA project, focusing on scalable and
+              efficient frontend solutions.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Middle Front-End Developer</div>
+          <div class="company-date">Tomnium | Apr 2019 - Nov 2019</div>
+          <ul>
+            <li>
+              Developed a robust application for managing warehouses and
+              processing incoming orders for enterprise clients.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Front-End Developer</div>
+          <div class="company-date">Magic Powered | Jun 2018 - Jan 2019</div>
+          <ul>
+            <li>
+              Played a crucial role in decision-making and development,
+              contributing to the growth of a web studio alongside a senior
+              engineer.
+            </li>
+            <li>Focused on building domains for local businesses.</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Front-End Developer</div>
+          <div class="company-date">Freelance | Mar 2017 - Apr 2018</div>
+          <ul>
+            <li>Converted PSD mockups to HTML5/CSS3.</li>
+            <li>Implemented maintainable UIs with modern JavaScript (ES6+).</li>
+            <li>Ensured responsive design across various platforms.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <div class="skill-title">Frontend Development:</div>
+            <div class="skill-list">
+              <strong>React.js</strong>, <strong>Vue.js</strong>,
+              <strong>Backbone.js</strong>, <strong>Material UI</strong>,
+              <strong>Styled-Components</strong>, <strong>D3.js</strong>,
+              <strong>Chart.js</strong>, <strong>HTML5</strong>,
+              <strong>CSS3</strong> (+ preprocessors SASS/Less),
+              <strong>TypeScript</strong>, <strong>jQuery</strong>,
+              <strong>Tailwind</strong>, <strong>Ant Design</strong>,
+              <strong>Storybook</strong>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-title">Backend Development:</div>
+            <div class="skill-list">
+              <strong>Node.js</strong>, <strong>Nest.js</strong>,
+              <strong>Express.js</strong>, <strong>PostgreSQL</strong>,
+              <strong>REST</strong>, <strong>GraphQL</strong>,
+              <strong>PostgreSQL</strong>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-title">Cloud & DevOps:</div>
+            <div class="skill-list">
+              <strong>AWS</strong>, <strong>Firebase</strong>,
+              <strong>Docker</strong>, <strong>Vercel</strong>,
+              <strong>Supabase</strong>, <strong>CI/CD pipelines</strong>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-title">AI/ML Integration:</div>
+            <div class="skill-list">
+              <strong>OpenAI</strong>, <strong>Replicate</strong>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-title">Testing & Optimization:</div>
+            <div class="skill-list">
+              <strong>Jest</strong>, <strong>React Testing Library</strong>,
+              <strong>Chromatic</strong>, <strong>Enzyme</strong>,
+              <strong>Cypress</strong>, <strong>Selenium</strong>,
+              <strong>Pytest</strong>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-title">Tools & Frameworks:</div>
+            <div class="skill-list">
+              <strong>Webpack</strong>, <strong>Babel</strong>,
+              <strong>Redux Toolkit</strong>, <strong>Temporal</strong>,
+              <strong>Parcel</strong>, <strong>Lighthouse</strong>,
+              <strong>Jenkins</strong>, <strong>GreenSock</strong>,
+              <strong>axios</strong>, <strong>Next.js</strong>,
+              <strong>Underscore/Lodash</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Languages</h2>
+        <div class="skill-category">
+          <div class="skill-list"><strong>English:</strong> Fluent</div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
