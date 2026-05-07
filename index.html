@@ -22,7 +22,7 @@
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
           Oxygen, Ubuntu, Cantarell, sans-serif;
-        line-height: 1.6;
+        line-height: 1.4;
         color: var(--text-color);
         max-width: 1200px;
         margin: 0 auto;
@@ -30,18 +30,36 @@
         background-color: var(--light-gray);
       }
 
+      .contact-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .contact-bar span:nth-child(even) {
+        color: var(--secondary-color);
+      }
+
       .cv-container {
         background: white;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 3rem;
+        padding: 2rem;
       }
 
       .header {
         display: grid;
         grid-template-columns: auto 1fr;
         gap: 2rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         align-items: center;
       }
 
@@ -155,6 +173,16 @@
   </head>
   <body>
     <div class="cv-container">
+      <div class="contact-bar">
+        <span>sergey.romanenko.dev@gmail.com</span>
+        <span>|</span>
+        <span>github.com/sgromanenko</span>
+        <span>|</span>
+        <span>linkedin.com/in/sgromanenko</span>
+        <span>|</span>
+        <span>Remote / Ukraine</span>
+      </div>
+
       <header class="header">
         <img
           src="https://i.imgur.com/Ev85ZIy.jpeg"
@@ -168,6 +196,72 @@
 
       <section class="section">
         <h2 class="section-title">Professional Experience</h2>
+
+        <div class="experience-item">
+          <div class="job-title">Full Stack Engineer</div>
+          <div class="company-date">DOIT Software | Jan 2026 - Present</div>
+          <ul>
+            <li>
+              <strong>Frontend:</strong>
+              <ul>
+                <li>
+                  Implemented Feature Slice Design (FSD) architecture in a
+                  high-concurrency admin environment to improve developer velocity
+                  and code maintainability.
+                </li>
+                <li>
+                  Developed a highly-responsive Moderation Dashboard featuring
+                  real-time reporting data and administrative workflows.
+                </li>
+                <li>
+                  Engineered a secure Authentication & Authorization flow
+                  featuring automated token-refresh mechanisms and role-based
+                  access control (RBAC).
+                </li>
+                <li>
+                  Created a centralized Design Token System, ensuring 100%
+                  design fidelity.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Backend:</strong>
+              <ul>
+                <li>
+                  Built a reliable pipeline to sync content from Ghost CMS into
+                  a GetStream.io social feed — used the Transactional Outbox and
+                  Inbox patterns on top of PGMQ to make sure events are never
+                  lost or processed twice, even under concurrent workers.
+                </li>
+                <li>
+                  Designed the background worker infrastructure around safe
+                  parallelism: idempotency gates, dead-letter handling for
+                  permanently failed jobs, and automatic recovery of stale locks
+                  so multiple worker instances can run without stepping on each
+                  other.
+                </li>
+                <li>
+                  Added end-to-end observability across all async flows,
+                  consistent structured logging, and a deduplicated Slack
+                  alerting system so critical failures surface immediately
+                  without generating noise.
+                </li>
+                <li>
+                  Wired failure detection into every meaningful failure point:
+                  queue reads, outbox polling, Ghost API sync, and core API
+                  flows like sign-up and account claims — so nothing fails
+                  silently in production.
+                </li>
+                <li>
+                  Engineered a delta-sync reconciliation job that catches any
+                  webhook events the system missed, and a transformation layer
+                  that converts raw CMS payloads into clean, typed activity
+                  schemas the frontend can actually work with.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
         <div class="experience-item">
           <div class="job-title">Full-Stack Developer</div>
@@ -275,8 +369,32 @@
         </div>
 
         <div class="experience-item">
+          <div class="job-title">UI Team Lead</div>
+          <div class="company-date">Cisco @ Praetorix | 2025 - 2026</div>
+          <ul>
+            <li>
+              Led the UI team building the IoT Control Center and related
+              enterprise platforms, managing everything from design through to
+              delivery across multiple product lines.
+            </li>
+            <li>
+              Built and maintained a shared UI component library that kept
+              design consistent across our enterprise applications.
+            </li>
+            <li>
+              Ran demos for leadership and product management showing what we'd
+              shipped, making sure the business impact was clear.
+            </li>
+            <li>
+              Set up development standards and code review practices while
+              coaching the team to deliver quality work on schedule.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
           <div class="job-title">Software Engineering Team Lead</div>
-          <div class="company-date">Cisco | Jul 2021 -Jul 2024</div>
+          <div class="company-date">Cisco | Jul 2021 - Jul 2024</div>
           <ul>
             <li>
               Led the UI team for Cisco SPA Software Engineering division,
