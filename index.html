@@ -30,24 +30,6 @@
         background-color: var(--light-gray);
       }
 
-      .contact-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        background-color: var(--primary-color);
-        color: white;
-        font-size: 0.9rem;
-        border-radius: 8px;
-        margin-bottom: 2rem;
-      }
-
-      .contact-bar span:nth-child(even) {
-        color: var(--secondary-color);
-      }
-
       .cv-container {
         background: white;
         border-radius: 12px;
@@ -80,7 +62,24 @@
       .title {
         font-size: 1.5rem;
         color: var(--secondary-color);
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .title-contacts {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+      }
+
+      .title-contacts a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .title-contacts a:hover {
+        text-decoration: underline;
       }
 
       .section {
@@ -173,16 +172,6 @@
   </head>
   <body>
     <div class="cv-container">
-      <div class="contact-bar">
-        <span>sergey.romanenko.dev@gmail.com</span>
-        <span>|</span>
-        <span>github.com/sgromanenko</span>
-        <span>|</span>
-        <span>linkedin.com/in/sgromanenko</span>
-        <span>|</span>
-        <span>Remote / Ukraine</span>
-      </div>
-
       <header class="header">
         <img
           src="https://i.imgur.com/Ev85ZIy.jpeg"
@@ -191,6 +180,10 @@
         <div>
           <h1 class="name">Sergey Romanenko</h1>
           <h2 class="title">UI Development</h2>
+          <div class="title-contacts">
+            <a href="mailto:woulder1@gmail.com">woulder1@gmail.com</a>
+            <a href="https://linkedin.com/in/sgromanenko" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
       </header>
 
