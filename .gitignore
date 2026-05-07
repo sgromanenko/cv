@@ -1,5 +1,17 @@
 
-# Beads / Dolt files (added by bd init)
+# Beads / Dolt files
 .dolt/
 *.db
 .beads-credential-key
+.beads/
+
+# Claude Code files
+.claude/
+CLAUDE.md
+AGENTS.md
+
+# Docs (regenerate from plan)
+docs/
+
+# Superpowers brainstorm (regenerate)
+.superpowers/
