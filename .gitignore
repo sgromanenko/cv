@@ -1,5 +1,7 @@
-
-# Beads / Dolt files (added by bd init)
+.beads/
+.claude/
+.superpowers/
+docs/
+.beads-credential-key
 .dolt/
 *.db
-.beads-credential-key

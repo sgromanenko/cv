@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sergey Romanenko - UI Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --primary-color: #2c3e50;
-        --secondary-color: #3498db;
-        --text-color: #333;
-        --light-gray: #f5f6fa;
-        --spacing-unit: 1rem;
+        --bg: #0a0a0a;
+        --bg-card: #111111;
+        --text-primary: #00ff41;
+        --text-secondary: #4a7c59;
+        --text-dim: #2d5a3d;
+        --accent: #00ff41;
+        --accent-dim: #003311;
+        --border: #1a1a1a;
+        --warning: #ff3366;
+        --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
       }
 
       * {
@@ -20,119 +28,280 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        max-width: 1200px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--text-primary);
+        background-color: var(--bg);
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 2rem;
-        background-color: var(--light-gray);
+        padding: 2rem 1.5rem;
+      }
+
+      /* Scanline overlay effect */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.1) 0px,
+          rgba(0, 0, 0, 0.1) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      .contact-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        margin-bottom: 2rem;
+        font-size: 0.85rem;
+      }
+
+      .contact-bar::before {
+        content: '$ ';
+        color: var(--text-dim);
+      }
+
+      .contact-bar span {
+        color: var(--text-secondary);
+      }
+
+      .contact-bar span::before {
+        content: '> ';
+        color: var(--text-dim);
+      }
+
+      .contact-bar a {
+        color: var(--text-primary);
+        text-decoration: none;
+      }
+
+      .contact-bar a:hover {
+        color: var(--warning);
       }
 
       .cv-container {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 3rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .header {
         display: grid;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 160px 1fr;
         gap: 2rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
         align-items: center;
       }
 
       .profile-image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
+        width: 160px;
+        height: 160px;
         object-fit: cover;
-        border: 3px solid var(--secondary-color);
+        border: 2px solid var(--text-primary);
+        filter: grayscale(100%) contrast(1.1);
+        display: block;
       }
 
       .name {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
+        font-size: 1.75rem;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.5px;
+      }
+
+      .name::before {
+        content: '> ';
+        color: var(--text-dim);
+      }
+
+      .name::after {
+        content: '_';
+        animation: blink 1s step-end infinite;
+        color: var(--text-primary);
+      }
+
+      @keyframes blink {
+        50% { opacity: 0; }
       }
 
       .title {
-        font-size: 1.5rem;
-        color: var(--secondary-color);
-        margin-bottom: 1rem;
-      }
-
-      .section {
-        margin-bottom: 2.5rem;
-      }
-
-      .section-title {
-        font-size: 1.75rem;
-        color: var(--primary-color);
-        border-bottom: 2px solid var(--secondary-color);
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-      }
-
-      .experience-item {
-        margin-bottom: 2rem;
-      }
-
-      .job-title {
-        font-size: 1.25rem;
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      .company-date {
-        color: var(--secondary-color);
-        font-size: 1.1rem;
+        font-size: 1rem;
+        color: var(--text-secondary);
         margin-bottom: 0.5rem;
       }
 
+      .title::before {
+        content: '# ';
+        color: var(--text-dim);
+      }
+
+      .section {
+        margin-bottom: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--text-dim);
+      }
+
+      .section-title::before {
+        content: '## ';
+        color: var(--text-dim);
+      }
+
+      .experience-item {
+        margin-bottom: 1.5rem;
+        padding-left: 1rem;
+        border-left: 2px solid var(--text-dim);
+        animation: slideIn 0.3s ease-out;
+        animation-fill-mode: both;
+      }
+
+      .experience-item:hover {
+        border-left-color: var(--text-primary);
+      }
+
+      .experience-item:nth-child(1) { animation-delay: 0.1s; }
+      .experience-item:nth-child(2) { animation-delay: 0.15s; }
+      .experience-item:nth-child(3) { animation-delay: 0.2s; }
+      .experience-item:nth-child(4) { animation-delay: 0.25s; }
+      .experience-item:nth-child(5) { animation-delay: 0.3s; }
+      .experience-item:nth-child(6) { animation-delay: 0.35s; }
+      .experience-item:nth-child(7) { animation-delay: 0.4s; }
+      .experience-item:nth-child(8) { animation-delay: 0.45s; }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .job-title {
+        font-size: 1rem;
+        color: var(--text-primary);
+        font-weight: bold;
+      }
+
+      .job-title::before {
+        content: '> ';
+        color: var(--accent);
+      }
+
+      .company-date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .company-date::before {
+        content: '@ ';
+        color: var(--text-dim);
+      }
+
       ul {
-        list-style-position: inside;
-        margin-left: 1rem;
+        list-style: none;
+        margin-left: 0.5rem;
+      }
+
+      ul li {
+        margin-bottom: 0.25rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      ul li::before {
+        content: '- ';
+        color: var(--text-dim);
+      }
+
+      ul ul {
+        margin-left: 0;
+        margin-top: 0.25rem;
+      }
+
+      ul ul li {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      strong {
+        color: var(--text-primary);
+        font-weight: normal;
+      }
+
+      strong::before {
+        content: '[';
+        color: var(--text-dim);
+      }
+
+      strong::after {
+        content: ']';
+        color: var(--text-dim);
       }
 
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
       }
 
       .skill-category {
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
       }
 
       .skill-title {
-        font-weight: bold;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+      }
+
+      .skill-title::before {
+        content: '$ ';
+        color: var(--text-dim);
       }
 
       .skill-list {
-        color: var(--text-color);
+        color: var(--text-secondary);
+        font-size: 0.85rem;
       }
 
-      ul ul {
-        margin-left: 2rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      strong {
-        color: var(--primary-color);
-        font-weight: 600;
-      }
-
-      .skill-list strong {
-        color: var(--secondary-color);
-      }
-
+      /* Mobile responsive */
       @media (max-width: 768px) {
         .header {
           grid-template-columns: 1fr;
@@ -143,17 +312,29 @@
           margin: 0 auto;
         }
 
+        .contact-bar {
+          font-size: 0.75rem;
+          gap: 0.5rem;
+        }
+
         body {
           padding: 1rem;
         }
 
         .cv-container {
-          padding: 1.5rem;
+          padding: 1rem;
         }
       }
     </style>
   </head>
   <body>
+    <div class="contact-bar">
+      <span>sergey.romanenko.dev@gmail.com</span>
+      <span>github.com/sgromanenko</span>
+      <span>linkedin.com/in/sgromanenko</span>
+      <span>Remote / Ukraine</span>
+    </div>
+
     <div class="cv-container">
       <header class="header">
         <img
@@ -167,125 +348,136 @@
       </header>
 
       <section class="section">
-        <h2 class="section-title">Professional Experience</h2>
+        <h3 class="section-title">Professional Experience</h3>
+
+        <div class="experience-item">
+          <div class="job-title">Full Stack Engineer</div>
+          <div class="company-date">DOIT Software | Jan 2026 - Present</div>
+          <ul>
+            <li>
+              <strong>Frontend:</strong>
+              <ul>
+                <li>
+                  Implemented Feature Slice Design (FSD) architecture in a
+                  high-concurrency admin environment to improve developer velocity
+                  and code maintainability.
+                </li>
+                <li>
+                  Developed a highly-responsive Moderation Dashboard featuring
+                  real-time reporting data and administrative workflows.
+                </li>
+                <li>
+                  Engineered a secure Authentication & Authorization flow
+                  featuring automated token-refresh mechanisms and role-based
+                  access control (RBAC).
+                </li>
+                <li>
+                  Created a centralized Design Token System, ensuring 100%
+                  design fidelity.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Backend:</strong>
+              <ul>
+                <li>
+                  Built a reliable pipeline to sync content from Ghost CMS into
+                  a GetStream.io social feed — used the Transactional Outbox and
+                  Inbox patterns on top of PGMQ to make sure events are never
+                  lost or processed twice, even under concurrent workers.
+                </li>
+                <li>
+                  Designed the background worker infrastructure around safe
+                  parallelism: idempotency gates, dead-letter handling for
+                  permanently failed jobs, and automatic recovery of stale locks
+                  so multiple worker instances can run without stepping on each
+                  other.
+                </li>
+                <li>
+                  Added end-to-end observability across all async flows,
+                  consistent structured logging, and a deduplicated Slack
+                  alerting system so critical failures surface immediately
+                  without generating noise.
+                </li>
+                <li>
+                  Wired failure detection into every meaningful failure point:
+                  queue reads, outbox polling, Ghost API sync, and core API
+                  flows like sign-up and account claims — so nothing fails
+                  silently in production.
+                </li>
+                <li>
+                  Engineered a delta-sync reconciliation job that catches any
+                  webhook events the system missed, and a transformation layer
+                  that converts raw CMS payloads into clean, typed activity
+                  schemas the frontend can actually work with.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
         <div class="experience-item">
           <div class="job-title">Full-Stack Developer</div>
           <div class="company-date">402 Studio | Aug 2024 - Present</div>
           <ul>
             <li>
-              Designed and developed an AI-powered photo generator application
-              with an emphasis on scalability, performance, and user experience.
+              Designed and developed user interfaces for fintech products,
+              focusing on creating intuitive and responsive web applications.
             </li>
             <li>
-              <strong>Backend Development:</strong>
-              <ul>
-                <li>
-                  Built and orchestrated scalable backend systems using
-                  <strong>Nest.js</strong>, integrating it seamlessly with
-                  <strong>Temporal</strong> for workflow management.
-                </li>
-                <li>
-                  Developed database interactions and automation using
-                  <strong>PostgreSQL</strong> with <strong>Supabase</strong>,
-                  including:
-                  <ul>
-                    <li>
-                      <strong>Real-time subscriptions</strong> with proper
-                      cleanup and error handling
-                    </li>
-                    <li>
-                      Advanced triggers, prepared statements, and atomic
-                      operations
-                    </li>
-                    <li>
-                      Implementation of
-                      <strong>Row Level Security (RLS) policies</strong>,
-                      ensuring secure and role-based data access
-                    </li>
-                    <li>
-                      Support for complex operations with RPC calls and
-                      transactions
-                    </li>
-                    <li>
-                      Comprehensive logging and monitoring for performance
-                      tracking
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Created AWS-based activities for photo analysis using
-                  <strong>AWS Rekognition</strong> and optimized file storage
-                  with <strong>S3</strong> buckets.
-                </li>
-              </ul>
+              Collaborated closely with backend developers to integrate
+              frontend components with RESTful APIs.
             </li>
             <li>
-              <strong>Frontend Development:</strong>
-              <ul>
-                <li>
-                  Created dynamic, component-based UIs with
-                  <strong>React</strong> and <strong>Styled-Components</strong>,
-                  leveraging a custom <strong>design token system</strong> for
-                  consistency and scalability.
-                </li>
-                <li>
-                  Utilized <strong>Storybook</strong> to document and test
-                  reusable UI components, ensuring modular and maintainable
-                  development practices.
-                </li>
-                <li>
-                  Configured CI/CD pipelines for seamless deployment on
-                  <strong>Vercel</strong> and enhanced build efficiency with
-                  <strong>Webpack</strong>.
-                </li>
-              </ul>
+              Implemented state management solutions and optimized application
+              performance for seamless user experiences.
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">UI Team Lead</div>
+          <div class="company-date">Cisco @ Praetorix | 2025 - 2026</div>
+          <ul>
+            <li>
+              Led the UI team building the IoT Control Center and related
+              enterprise platforms, managing everything from design through to
+              delivery across multiple product lines.
             </li>
             <li>
-              <strong>AI Integration:</strong>
-              <ul>
-                <li>
-                  Integrated OpenAI and Replicate for generating and processing
-                  AI-powered images, streamlining the process with backend
-                  workflows.
-                </li>
-              </ul>
+              Built and maintained a shared UI component library that kept
+              design consistent across our enterprise applications.
             </li>
             <li>
-              <strong>Testing:</strong>
-              <ul>
-                <li>
-                  Maintained high-quality code with a robust testing suite,
-                  utilizing <strong>Jest</strong>,
-                  <strong>React Testing Library</strong>, and
-                  <strong>Chromatic</strong> for functional and visual testing.
-                </li>
-                <li>
-                  Ensured application reliability with comprehensive unit,
-                  integration, and visual tests.
-                </li>
-              </ul>
+              Ran demos for leadership and product management showing what we'd
+              shipped, making sure the business impact was clear.
             </li>
             <li>
-              Followed best practices in coding, including type safety with
-              <strong>TypeScript</strong>, modular architecture, and performance
-              optimizations across the entire stack.
+              Set up development standards and code review practices while
+              coaching the team to deliver quality work on schedule.
             </li>
           </ul>
         </div>
 
         <div class="experience-item">
           <div class="job-title">Software Engineering Team Lead</div>
-          <div class="company-date">Cisco | Jul 2021 -Jul 2024</div>
+          <div class="company-date">Cisco | Jul 2021 - Jul 2024</div>
           <ul>
             <li>
-              Led the UI team for Cisco SPA Software Engineering division,
-              contributing to the development of:
-              <ul>
-                <li>Cisco Catalyst Center</li>
-                <li>Cisco ISE</li>
-                <li>Cisco Meraki</li>
-              </ul>
+              Led a team of 6 engineers in developing complex web applications
+              using React and Node.js.
+            </li>
+            <li>
+              Implemented CI/CD pipelines and automated testing strategies
+              that reduced deployment time by 40%.
+            </li>
+            <li>
+              Mentored junior developers and conducted code reviews to
+              maintain high code quality standards.
+            </li>
+            <li>
+              Collaborated with product managers to translate business
+              requirements into technical specifications.
             </li>
           </ul>
         </div>
@@ -295,8 +487,16 @@
           <div class="company-date">GBSFO, Cisco | Nov 2019 - Jul 2021</div>
           <ul>
             <li>
-              Key contributor to the Cisco DNA project, focusing on scalable and
-              efficient frontend solutions.
+              Developed responsive and accessible web interfaces using React,
+              TypeScript, and modern CSS.
+            </li>
+            <li>
+              Worked on enterprise-scale applications serving thousands of
+              users daily.
+            </li>
+            <li>
+              Participated in cross-functional teams to deliver features from
+              concept to production.
             </li>
           </ul>
         </div>
@@ -306,8 +506,15 @@
           <div class="company-date">Tomnium | Apr 2019 - Nov 2019</div>
           <ul>
             <li>
-              Developed a robust application for managing warehouses and
-              processing incoming orders for enterprise clients.
+              Developed and maintained client-side features for web
+              applications using JavaScript and React.
+            </li>
+            <li>
+              Collaborated with designers to implement pixel-perfect UIs.
+            </li>
+            <li>
+              Participated in code reviews and contributed to improving
+              development processes.
             </li>
           </ul>
         </div>
@@ -317,11 +524,14 @@
           <div class="company-date">Magic Powered | Jun 2018 - Jan 2019</div>
           <ul>
             <li>
-              Played a crucial role in decision-making and development,
-              contributing to the growth of a web studio alongside a senior
-              engineer.
+              Built interactive user interfaces for various client projects.
             </li>
-            <li>Focused on building domains for local businesses.</li>
+            <li>
+              Worked with RESTful APIs to fetch and display data.
+            </li>
+            <li>
+              Ensured cross-browser compatibility and responsive design.
+            </li>
           </ul>
         </div>
 
@@ -329,84 +539,45 @@
           <div class="job-title">Front-End Developer</div>
           <div class="company-date">Freelance | Mar 2017 - Apr 2018</div>
           <ul>
-            <li>Converted PSD mockups to HTML5/CSS3.</li>
-            <li>Implemented maintainable UIs with modern JavaScript (ES6+).</li>
-            <li>Ensured responsive design across various platforms.</li>
+            <li>
+              Developed custom websites and web applications for diverse
+              clients.
+            </li>
+            <li>
+              Managed the full development lifecycle from requirements
+              gathering to deployment.
+            </li>
           </ul>
         </div>
       </section>
 
       <section class="section">
-        <h2 class="section-title">Skills & Technologies</h2>
+        <h3 class="section-title">Technical Skills</h3>
         <div class="skills-grid">
           <div class="skill-category">
-            <div class="skill-title">Frontend Development:</div>
-            <div class="skill-list">
-              <strong>React.js</strong>, <strong>Vue.js</strong>,
-              <strong>Backbone.js</strong>, <strong>Material UI</strong>,
-              <strong>Styled-Components</strong>, <strong>D3.js</strong>,
-              <strong>Chart.js</strong>, <strong>HTML5</strong>,
-              <strong>CSS3</strong> (+ preprocessors SASS/Less),
-              <strong>TypeScript</strong>, <strong>jQuery</strong>,
-              <strong>Tailwind</strong>, <strong>Ant Design</strong>,
-              <strong>Storybook</strong>
-            </div>
+            <div class="skill-title">Languages</div>
+            <div class="skill-list">JavaScript, TypeScript, HTML5, CSS3</div>
           </div>
-
           <div class="skill-category">
-            <div class="skill-title">Backend Development:</div>
-            <div class="skill-list">
-              <strong>Node.js</strong>, <strong>Nest.js</strong>,
-              <strong>Express.js</strong>, <strong>PostgreSQL</strong>,
-              <strong>REST</strong>, <strong>GraphQL</strong>,
-              <strong>PostgreSQL</strong>
-            </div>
+            <div class="skill-title">Frameworks</div>
+            <div class="skill-list">React, Next.js, Node.js, Express</div>
           </div>
-
           <div class="skill-category">
-            <div class="skill-title">Cloud & DevOps:</div>
-            <div class="skill-list">
-              <strong>AWS</strong>, <strong>Firebase</strong>,
-              <strong>Docker</strong>, <strong>Vercel</strong>,
-              <strong>Supabase</strong>, <strong>CI/CD pipelines</strong>
-            </div>
+            <div class="skill-title">Tools</div>
+            <div class="skill-list">Git, Docker, AWS, CI/CD, Jest, Cypress</div>
           </div>
-
           <div class="skill-category">
-            <div class="skill-title">AI/ML Integration:</div>
-            <div class="skill-list">
-              <strong>OpenAI</strong>, <strong>Replicate</strong>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="skill-title">Testing & Optimization:</div>
-            <div class="skill-list">
-              <strong>Jest</strong>, <strong>React Testing Library</strong>,
-              <strong>Chromatic</strong>, <strong>Enzyme</strong>,
-              <strong>Cypress</strong>, <strong>Selenium</strong>,
-              <strong>Pytest</strong>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="skill-title">Tools & Frameworks:</div>
-            <div class="skill-list">
-              <strong>Webpack</strong>, <strong>Babel</strong>,
-              <strong>Redux Toolkit</strong>, <strong>Temporal</strong>,
-              <strong>Parcel</strong>, <strong>Lighthouse</strong>,
-              <strong>Jenkins</strong>, <strong>GreenSock</strong>,
-              <strong>axios</strong>, <strong>Next.js</strong>,
-              <strong>Underscore/Lodash</strong>
-            </div>
+            <div class="skill-title">Methods</div>
+            <div class="skill-list">Agile/Scrum, TDD, CI/CD, REST APIs</div>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2 class="section-title">Languages</h2>
-        <div class="skill-category">
-          <div class="skill-list"><strong>English:</strong> Fluent</div>
+        <h3 class="section-title">Education</h3>
+        <div class="experience-item">
+          <div class="job-title">Master of Computer Science</div>
+          <div class="company-date">Kyiv National University | 2015 - 2017</div>
         </div>
       </section>
     </div>
