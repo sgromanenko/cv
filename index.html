@@ -57,42 +57,6 @@
         z-index: 9999;
       }
 
-      .contact-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        padding: 0.75rem 1rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        margin-bottom: 2rem;
-        font-size: 0.85rem;
-      }
-
-      .contact-bar::before {
-        content: '$ ';
-        color: var(--text-dim);
-      }
-
-      .contact-bar span {
-        color: var(--text-secondary);
-      }
-
-      .contact-bar span::before {
-        content: '> ';
-        color: var(--text-dim);
-      }
-
-      .contact-bar a {
-        color: var(--text-primary);
-        text-decoration: none;
-      }
-
-      .contact-bar a:hover {
-        color: var(--warning);
-      }
-
       .cv-container {
         background: var(--bg-card);
         border: 1px solid var(--border);
@@ -161,6 +125,24 @@
       .title::before {
         content: '# ';
         color: var(--text-dim);
+      }
+
+      .title-contacts {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+      }
+
+      .title-contacts a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+
+      .title-contacts a:hover {
+        color: var(--text-primary);
+        text-decoration: underline;
       }
 
       .section {
@@ -312,11 +294,6 @@
           margin: 0 auto;
         }
 
-        .contact-bar {
-          font-size: 0.75rem;
-          gap: 0.5rem;
-        }
-
         body {
           padding: 1rem;
         }
@@ -328,13 +305,6 @@
     </style>
   </head>
   <body>
-    <div class="contact-bar">
-      <span>sergey.romanenko.dev@gmail.com</span>
-      <span>github.com/sgromanenko</span>
-      <span>linkedin.com/in/sgromanenko</span>
-      <span>Remote / Ukraine</span>
-    </div>
-
     <div class="cv-container">
       <header class="header">
         <img
@@ -344,6 +314,10 @@
         <div>
           <h1 class="name">Sergey Romanenko</h1>
           <h2 class="title">UI Development</h2>
+          <div class="title-contacts">
+            <a href="mailto:woulder1@gmail.com">woulder1@gmail.com</a>
+            <a href="https://linkedin.com/in/sgromanenko" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
       </header>
 
@@ -358,22 +332,24 @@
               <strong>Frontend:</strong>
               <ul>
                 <li>
-                  Implemented Feature Slice Design (FSD) architecture in a
-                  high-concurrency admin environment to improve developer velocity
-                  and code maintainability.
+                  Developed a scalable faith-based social platform using
+                  Next.js, TypeScript, and Feature-Sliced Design (FSD),
+                  improving maintainability and feature delivery across
+                  multiple product domains.
                 </li>
                 <li>
                   Developed a highly-responsive Moderation Dashboard featuring
                   real-time reporting data and administrative workflows.
                 </li>
                 <li>
-                  Engineered a secure Authentication & Authorization flow
-                  featuring automated token-refresh mechanisms and role-based
-                  access control (RBAC).
+                  Engineered secure Authentication & Authorization flows with
+                  automated token refresh, protected routes, session management,
+                  and role-based access control (RBAC).
                 </li>
                 <li>
-                  Created a centralized Design Token System, ensuring 100%
-                  design fidelity.
+                  Created a centralized Design Token System and reusable UI
+                  architecture to ensure consistent cross-platform design
+                  implementation and rapid UI iteration.
                 </li>
               </ul>
             </li>
@@ -381,35 +357,42 @@
               <strong>Backend:</strong>
               <ul>
                 <li>
-                  Built a reliable pipeline to sync content from Ghost CMS into
-                  a GetStream.io social feed — used the Transactional Outbox and
-                  Inbox patterns on top of PGMQ to make sure events are never
-                  lost or processed twice, even under concurrent workers.
+                  Implemented an event-driven backend architecture powering
+                  social feeds, chat activity, notifications, and CMS-driven
+                  content distribution.
                 </li>
                 <li>
-                  Designed the background worker infrastructure around safe
-                  parallelism: idempotency gates, dead-letter handling for
-                  permanently failed jobs, and automatic recovery of stale locks
-                  so multiple worker instances can run without stepping on each
-                  other.
+                  Built a reliable synchronization pipeline between Ghost CMS
+                  and GetStream.io using Transactional Outbox/Inbox patterns
+                  on top of PGMQ, guaranteeing exactly-once event processing
+                  under concurrent workloads.
                 </li>
                 <li>
-                  Added end-to-end observability across all async flows,
-                  consistent structured logging, and a deduplicated Slack
-                  alerting system so critical failures surface immediately
-                  without generating noise.
+                  Engineered resilient worker infrastructure with idempotency
+                  protection, distributed locking, dead-letter queues, retry
+                  orchestration, and stale-lock recovery to support safe
+                  horizontal scaling.
                 </li>
                 <li>
-                  Wired failure detection into every meaningful failure point:
-                  queue reads, outbox polling, Ghost API sync, and core API
-                  flows like sign-up and account claims — so nothing fails
-                  silently in production.
+                  Developed real-time activity processing and transformation
+                  pipelines that normalized raw CMS and user-generated events
+                  into strongly-typed frontend-ready activity schemas.
                 </li>
                 <li>
-                  Engineered a delta-sync reconciliation job that catches any
-                  webhook events the system missed, and a transformation layer
-                  that converts raw CMS payloads into clean, typed activity
-                  schemas the frontend can actually work with.
+                  Implemented delta-sync reconciliation jobs to recover missed
+                  webhook events and maintain eventual consistency across
+                  distributed systems.
+                </li>
+                <li>
+                  Added end-to-end observability across asynchronous workflows
+                  using structured logging, traceable job execution, and
+                  deduplicated Slack alerting for critical production failures.
+                </li>
+                <li>
+                  Integrated fault detection and recovery mechanisms across
+                  queue consumers, webhook processing, authentication flows,
+                  and external API synchronization to eliminate silent
+                  failures in production environments.
                 </li>
               </ul>
             </li>
