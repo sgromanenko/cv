@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sergey Romanenko - UI Development</title>
+    <title>Sergey Romanenko - Full Stack Engineer</title>
     <style>
       :root {
         --primary-color: #2c3e50;
@@ -20,8 +20,9 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
         line-height: 1.4;
         color: var(--text-color);
         max-width: 1200px;
@@ -38,19 +39,7 @@
       }
 
       .header {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 2rem;
         margin-bottom: 2rem;
-        align-items: center;
-      }
-
-      .profile-image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--secondary-color);
       }
 
       .name {
@@ -59,10 +48,11 @@
         margin-bottom: 0.5rem;
       }
 
-      .title {
-        font-size: 1.5rem;
-        color: var(--secondary-color);
-        margin-bottom: 0.5rem;
+      .summary {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #4a5568;
+        margin-top: 1rem;
       }
 
       .title-contacts {
@@ -151,15 +141,6 @@
       }
 
       @media (max-width: 768px) {
-        .header {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .profile-image {
-          margin: 0 auto;
-        }
-
         body {
           padding: 1rem;
         }
@@ -173,18 +154,31 @@
   <body>
     <div class="cv-container">
       <header class="header">
-        <img
-          src="https://i.imgur.com/Ev85ZIy.jpeg"
-          alt="Sergey Romanenko"
-          class="profile-image" />
-        <div>
-          <h1 class="name">Sergey Romanenko</h1>
-          <h2 class="title">UI Development</h2>
-          <div class="title-contacts">
-            <a href="mailto:woulder1@gmail.com">Email</a>
-            <a href="https://linkedin.com/in/sgromanenko" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
+        <h1 class="name">Sergey Romanenko</h1>
+        <div class="title-contacts">
+          <a href="mailto:woulder1@gmail.com">Email</a>
+          <a
+            href="https://linkedin.com/in/sgromanenko"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/sgromanenko"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
         </div>
+        <p class="summary">
+          Experienced Full Stack Engineer with 9+ years of expertise in
+          architecting scalable web platforms, mission-critical UI systems, and
+          AI-driven products. Proven track record leading engineering teams at
+          Cisco and high-growth startups, specializing in resilient frontend
+          architectures (Next.js, React, TypeScript), centralized design
+          systems, and robust backend/cloud services (Nest.js, PostgreSQL,
+          Supabase).
+        </p>
       </header>
 
       <section class="section">
@@ -192,7 +186,7 @@
 
         <div class="experience-item">
           <div class="job-title">Full Stack Engineer</div>
-          <div class="company-date">DOIT Software | Jan 2026 - May 2026</div>
+          <div class="company-date">DOIT Software | Jan 2026 - Present</div>
           <ul>
             <li>
               <strong>Frontend:</strong>
@@ -200,8 +194,8 @@
                 <li>
                   Developed a scalable faith-based social platform using
                   Next.js, TypeScript, and Feature-Sliced Design (FSD),
-                  improving maintainability and feature delivery across
-                  multiple product domains.
+                  improving maintainability and feature delivery across multiple
+                  product domains.
                 </li>
                 <li>
                   Developed a highly-responsive Moderation Dashboard featuring
@@ -229,9 +223,9 @@
                 </li>
                 <li>
                   Built a reliable synchronization pipeline between Ghost CMS
-                  and GetStream.io using Transactional Outbox/Inbox patterns
-                  on top of PGMQ, guaranteeing exactly-once event processing
-                  under concurrent workloads.
+                  and GetStream.io using Transactional Outbox/Inbox patterns on
+                  top of PGMQ, guaranteeing exactly-once event processing under
+                  concurrent workloads.
                 </li>
                 <li>
                   Engineered resilient worker infrastructure with idempotency
@@ -256,9 +250,9 @@
                 </li>
                 <li>
                   Integrated fault detection and recovery mechanisms across
-                  queue consumers, webhook processing, authentication flows,
-                  and external API synchronization to eliminate silent
-                  failures in production environments.
+                  queue consumers, webhook processing, authentication flows, and
+                  external API synchronization to eliminate silent failures in
+                  production environments.
                 </li>
               </ul>
             </li>
